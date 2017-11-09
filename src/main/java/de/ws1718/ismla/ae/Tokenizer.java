@@ -57,12 +57,15 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 							token.setGloss(e.glosses.toString());
 							token.addToIndexes(arg0);
 							
-							System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+end);
+							System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+(end-1));
 						}
 						
 						
 						//index jump
-						i += k;
+						i += k-1;
+						
+						//stop iterating
+						break;
 					}
 				}
 			}
