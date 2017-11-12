@@ -22,7 +22,7 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 	public void initialize(UimaContext aContext) throws ResourceInitializationException {
 		// TODO Auto-generated method stub
 		super.initialize(aContext);
-		lookahead = 4;
+		lookahead = (Integer) aContext.getConfigParameterValue("lookahead");
 		dict = new CmnEngDictionary();
 	}
 

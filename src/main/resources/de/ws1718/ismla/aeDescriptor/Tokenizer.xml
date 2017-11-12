@@ -7,8 +7,23 @@
     <description/>
     <version>1.0</version>
     <vendor/>
-    <configurationParameters/>
-    <configurationParameterSettings/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>lookahead</name>
+        <description>a dynamicly chanable lookahead for greedy tokenization</description>
+        <type>Integer</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>lookahead</name>
+        <value>
+          <integer>4</integer>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
         <import location="../typeSystems/typeSystemDescriptorCHN.xml"/>
