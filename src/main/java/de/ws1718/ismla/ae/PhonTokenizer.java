@@ -44,12 +44,17 @@ public class PhonTokenizer extends JCasAnnotator_ImplBase {
 			//lookup of the symbol
 			List<SimpleDictionaryEntry> result = dict.lookup(sign);
 			
+			boolean containsPhon = false;
+			
 			if(!result.isEmpty()){
 				
 				for(SimpleDictionaryEntry e : result){
 					
 					if(e.category.equalsIgnoreCase(PHON)){
-						
+						containsPhon = true;
+//						System.out.println(e.prnc + " " + e.category);
+//						System.out.println("PHON-YES");
+//						System.out.println();
 						PhonChunkCMN tmp = new PhonChunkCMN(arg0);
 						tmp.setBegin(i);
 						tmp.setEnd(end);
@@ -61,50 +66,54 @@ public class PhonTokenizer extends JCasAnnotator_ImplBase {
 						chunkItems.add(tmp);
 					
 						//if its not a PHON
-					}else{
-						
-						//only >1 chunks
-						if(chunkItems.size() > 1){
-							
-							System.out.println(chunkItems.size());
-							
-							//handle glosses and pinyin
-							StringBuilder sbGlosses = new StringBuilder();
-							StringBuilder sbPinyin = new StringBuilder();
-							sbGlosses.append("[");
-							for(PhonChunkCMN chunkItem : chunkItems){
-								//was already trimmed to the first gloss
-								
-//								System.out.print(chunkItem.getGloss() + ", ");
-								
-								sbGlosses.append(chunkItem.getGloss());
-								//concat pinyins
-								sbPinyin.append(chunkItem.getPinyin());
-								
-//								System.out.print(chunkItem.getPinyin() + ", ");
-								
-							}
-							sbGlosses.append("]");
-							
-//							System.out.println(sbGlosses.toString());
-//							System.out.println(sbPinyin.toString());
-//							System.out.println();
-							
-							//set chunk span
-							PhonChunkCMN chunk = new PhonChunkCMN(arg0);
-							chunk.setBegin(chunkItems.get(0).getBegin());//begin of the first item
-							chunk.setEnd(chunkItems.get(chunkItems.size()-1).getEnd());//end of the last item
-							chunk.setCat(PHON);
-							chunk.setGloss(sbGlosses.toString());
-							chunk.setPinyin(sbPinyin.toString());
-							chunk.addToIndexes(arg0);
-						}
-						
-						//reset either way (since its not a PHON)
-						chunkItems = new ArrayList<PhonChunkCMN>();
-						
 					}
 				}
+				
+				//after all possible entries where checked
+				if(!containsPhon){
+					
+					//only >1 chunks
+					if(chunkItems.size() > 1){
+						
+//						System.out.println(chunkItems.size());
+						
+						//handle glosses and pinyin
+						StringBuilder sbGlosses = new StringBuilder();
+						StringBuilder sbPinyin = new StringBuilder();
+						sbGlosses.append("[");
+						for(PhonChunkCMN chunkItem : chunkItems){
+							//was already trimmed to the first gloss
+							
+//							System.out.print(chunkItem.getGloss() + ", ");
+							
+							sbGlosses.append(chunkItem.getGloss());
+							//concat pinyins
+							sbPinyin.append(chunkItem.getPinyin());
+							
+//							System.out.print(chunkItem.getPinyin() + ", ");
+							
+						}
+						sbGlosses.append("]");
+						
+//						System.out.println(sbGlosses.toString());
+//						System.out.println(sbPinyin.toString());
+//						System.out.println();
+						
+						//set chunk span
+						PhonChunkCMN chunk = new PhonChunkCMN(arg0);
+						chunk.setBegin(chunkItems.get(0).getBegin());//begin of the first item
+						chunk.setEnd(chunkItems.get(chunkItems.size()-1).getEnd());//end of the last item
+						chunk.setCat(PHON);
+						chunk.setGloss(sbGlosses.toString());
+						chunk.setPinyin(sbPinyin.toString());
+						chunk.addToIndexes(arg0);
+					}
+					
+					//reset either way (since its not a PHON)
+					chunkItems.clear();
+					
+				}
+				
 			}	
 		}
 	}
