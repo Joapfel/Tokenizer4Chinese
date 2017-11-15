@@ -12,8 +12,7 @@
       <features>
         <featureDescription>
           <name>pinyin</name>
-          <description>latin transcription
-</description>
+          <description>latin transcription</description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
         <featureDescription>
@@ -27,6 +26,16 @@
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
+    </typeDescription>
+  <typeDescription>
+      <name>de.ws1718.ismla.types.MeaningfulTokenCMN</name>
+      <description/>
+      <supertypeName>de.ws1718.ismla.types.TokenCMN</supertypeName>
+    </typeDescription>
+    <typeDescription>
+      <name>de.ws1718.ismla.types.PhonChunkCMN</name>
+      <description/>
+      <supertypeName>de.ws1718.ismla.types.TokenCMN</supertypeName>
     </typeDescription>
   </types>
 </typeSystemDescription>

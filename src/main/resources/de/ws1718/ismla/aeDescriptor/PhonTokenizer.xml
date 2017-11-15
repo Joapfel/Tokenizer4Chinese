@@ -1,29 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>de.ws1718.ismla.ae.Tokenizer</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>de.ws1718.ismla.ae.PhonTokenizer</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>Tokenizer</name>
+    <name>PhonTokenizer</name>
     <description/>
     <version>1.0</version>
     <vendor/>
-    <configurationParameters>
-      <configurationParameter>
-        <name>lookahead</name>
-        <description>a dynamicly chanable lookahead for greedy tokenization</description>
-        <type>Integer</type>
-        <multiValued>false</multiValued>
-        <mandatory>true</mandatory>
-      </configurationParameter>
-    </configurationParameters>
-    <configurationParameterSettings>
-      <nameValuePair>
-        <name>lookahead</name>
-        <value>
-          <integer>4</integer>
-        </value>
-      </nameValuePair>
-    </configurationParameterSettings>
+    <configurationParameters/>
+    <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
         <import location="../typeSystems/typeSystemDescriptorCHN.xml"/>
@@ -35,7 +20,7 @@
       <capability>
         <inputs/>
         <outputs>
-          <type allAnnotatorFeatures="true">de.ws1718.ismla.types.MeaningfulTokenCMN</type>
+          <type allAnnotatorFeatures="true">de.ws1718.ismla.types.PhonChunkCMN</type>
         </outputs>
         <languagesSupported/>
       </capability>

@@ -11,7 +11,7 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed Nov 08 15:07:36 CET 2017
+ * Updated by JCasGen Wed Nov 15 15:15:25 CET 2017
  * XML source: /home/johannes/workspace_industrial_strength/ChineseTokenizer/src/main/resources/de/ws1718/ismla/typeSystems/typeSystemDescriptorCHN.xml
  * @generated */
 public class TokenCMN extends Annotation {
@@ -80,7 +80,6 @@ public class TokenCMN extends Annotation {
   //* Feature: pinyin
 
   /** getter for pinyin - gets latin transcription
-
    * @generated
    * @return value of the feature 
    */
@@ -89,8 +88,7 @@ public class TokenCMN extends Annotation {
       jcasType.jcas.throwFeatMissing("pinyin", "de.ws1718.ismla.types.TokenCMN");
     return jcasType.ll_cas.ll_getStringValue(addr, ((TokenCMN_Type)jcasType).casFeatCode_pinyin);}
     
-  /** setter for pinyin - sets latin transcription
- 
+  /** setter for pinyin - sets latin transcription 
    * @generated
    * @param v value to set into the feature 
    */

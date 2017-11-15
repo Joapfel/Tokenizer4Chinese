@@ -9,13 +9,17 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
-import de.tuebingen.sfs.tcl.ismla.exercises.ex01.CmnEngDictionary;
-import de.tuebingen.sfs.tcl.ismla.exercises.ex01.SimpleDictionaryEntry;
+import de.tuebingen.sfs.tcl.ismla.exercises.ex02.CmnEngDictionaryWithPhon;
+import de.tuebingen.sfs.tcl.ismla.exercises.ex02.SimpleDictionaryEntry;
+import de.ws1718.ismla.types.MeaningfulTokenCMN;
 import de.ws1718.ismla.types.TokenCMN;
 
 public class Tokenizer extends JCasAnnotator_ImplBase {
+	
+	final private String PHON = "PHON";
 
-	private CmnEngDictionary dict;
+//	private CmnEngDictionary dict;
+	private CmnEngDictionaryWithPhon dict;
 	private int lookahead;
 
 	@Override
@@ -23,7 +27,7 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 		// TODO Auto-generated method stub
 		super.initialize(aContext);
 		lookahead = (Integer) aContext.getConfigParameterValue("lookahead");
-		dict = new CmnEngDictionary();
+		dict = new CmnEngDictionaryWithPhon();
 	}
 
 	@Override
@@ -42,6 +46,8 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 
 					String checkToken = text.substring(i, end);
 					
+					//old tokenizer version
+//					List<SimpleDictionaryEntry> result = dict.lookup(checkToken);
 					List<SimpleDictionaryEntry> result = dict.lookup(checkToken);
 
 					// if the resulting list is not empty, the token exists
@@ -49,20 +55,30 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 						
 						//there should be only one entry anyway
 						for (SimpleDictionaryEntry e : result) {
-							TokenCMN token = new TokenCMN(arg0);
-							token.setBegin(i);
-							token.setEnd(end);
-							token.setPinyin(e.prnc);
-							token.setCat(e.category);
-							token.setGloss(e.glosses.toString());
-							token.addToIndexes(arg0);
 							
-							System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+(end));
+//							TokenCMN token = new TokenCMN(arg0);
+//							token.setBegin(i);
+//							token.setEnd(end);
+//							token.setPinyin(e.prnc);
+//							token.setCat(e.category);
+//							token.setGloss(e.glosses.toString());
+//							token.addToIndexes(arg0);
 							
-							break;
+							if(!e.category.equalsIgnoreCase(PHON)){
+								MeaningfulTokenCMN t = new MeaningfulTokenCMN(arg0);
+								t.setBegin(i);
+								t.setEnd(end);
+								t.setPinyin(e.prnc);
+								t.setCat(e.category);
+								t.setGloss(e.glosses.toString());
+								t.addToIndexes(arg0);
+								
+								System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+(end));
+							}
+					
+//							break;
 						}
-						
-						
+							
 						//index jump
 						i += k-1;
 						

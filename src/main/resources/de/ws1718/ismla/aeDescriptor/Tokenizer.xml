@@ -35,7 +35,7 @@
       <capability>
         <inputs/>
         <outputs>
-          <type allAnnotatorFeatures="true">de.ws1718.ismla.types.TokenCMN</type>
+          <type allAnnotatorFeatures="true">de.ws1718.ismla.types.MeaningfulTokenCMN</type>
         </outputs>
         <languagesSupported/>
       </capability>
