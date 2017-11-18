@@ -52,9 +52,7 @@ public class PhonTokenizer extends JCasAnnotator_ImplBase {
 					
 					if(e.category.equalsIgnoreCase(PHON)){
 						containsPhon = true;
-//						System.out.println(e.prnc + " " + e.category);
-//						System.out.println("PHON-YES");
-//						System.out.println();
+						
 						PhonChunkCMN tmp = new PhonChunkCMN(arg0);
 						tmp.setBegin(i);
 						tmp.setEnd(end);
@@ -75,8 +73,6 @@ public class PhonTokenizer extends JCasAnnotator_ImplBase {
 					//only >1 chunks
 					if(chunkItems.size() > 1){
 						
-//						System.out.println(chunkItems.size());
-						
 						//handle glosses and pinyin
 						StringBuilder sbGlosses = new StringBuilder();
 						StringBuilder sbPinyin = new StringBuilder();
@@ -84,20 +80,13 @@ public class PhonTokenizer extends JCasAnnotator_ImplBase {
 						for(PhonChunkCMN chunkItem : chunkItems){
 							//was already trimmed to the first gloss
 							
-//							System.out.print(chunkItem.getGloss() + ", ");
-							
 							sbGlosses.append(chunkItem.getGloss());
 							//concat pinyins
 							sbPinyin.append(chunkItem.getPinyin());
 							
-//							System.out.print(chunkItem.getPinyin() + ", ");
 							
 						}
 						sbGlosses.append("]");
-						
-//						System.out.println(sbGlosses.toString());
-//						System.out.println(sbPinyin.toString());
-//						System.out.println();
 						
 						//set chunk span
 						PhonChunkCMN chunk = new PhonChunkCMN(arg0);

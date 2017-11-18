@@ -56,14 +56,6 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 						//there should be only one entry anyway
 						for (SimpleDictionaryEntry e : result) {
 							
-//							TokenCMN token = new TokenCMN(arg0);
-//							token.setBegin(i);
-//							token.setEnd(end);
-//							token.setPinyin(e.prnc);
-//							token.setCat(e.category);
-//							token.setGloss(e.glosses.toString());
-//							token.addToIndexes(arg0);
-							
 							if(!e.category.equalsIgnoreCase(PHON)){
 								MeaningfulTokenCMN t = new MeaningfulTokenCMN(arg0);
 								t.setBegin(i);
@@ -73,7 +65,7 @@ public class Tokenizer extends JCasAnnotator_ImplBase {
 								t.setGloss(e.glosses.toString());
 								t.addToIndexes(arg0);
 								
-								System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+(end));
+//								System.out.println(e.glosses.toString() + " " + e.category + " " + e.prnc + " " + checkToken + " " + i+"-"+(end));
 							}
 					
 //							break;
