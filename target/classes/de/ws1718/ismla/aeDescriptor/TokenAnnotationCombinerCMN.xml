@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
-  <primitive>true</primitive>  <annotatorImplementationName>de.ws1718.ismla.ae.ReworkPhonAndMeaningfulAnnotations</annotatorImplementationName>
+  <primitive>true</primitive>  <annotatorImplementationName>de.ws1718.ismla.ae.TokenAnnotationCombinerCMN</annotatorImplementationName>
   <analysisEngineMetaData>
     <name>ReworkPhonAndMeaningfulAnnotations</name>
     <description/>

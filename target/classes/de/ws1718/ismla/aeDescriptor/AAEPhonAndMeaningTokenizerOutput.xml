@@ -9,8 +9,8 @@
     <delegateAnalysisEngine key="PhonTokenizer">
       <import name="de.ws1718.ismla.aeDescriptor.PhonTokenizer"/>
     </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="ReworkPhonAndMeaningfulAnnotations">
-      <import location="ReworkPhonAndMeaningfulAnnotations.xml"/>
+    <delegateAnalysisEngine key="TokenAnnotationCombinerCMN">
+      <import location="TokenAnnotationCombinerCMN.xml"/>
     
     </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
@@ -25,7 +25,7 @@
       <fixedFlow>
         <node>Tokenizer</node>
         <node>PhonTokenizer</node>
-        <node>ReworkPhonAndMeaningfulAnnotations</node>
+        <node>TokenAnnotationCombinerCMN</node>
       </fixedFlow>
     </flowConstraints>
     <typePriorities/>
