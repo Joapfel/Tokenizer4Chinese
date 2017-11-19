@@ -50,9 +50,9 @@ public class GlossOutputCMN extends CasConsumer_ImplBase {
 			while(iter.hasNext()){
 				TokenCMN token = iter.next();
 				
-				pw.println("orthography:" + "\t" + token.getCoveredText());
-				pw.println("pinyin:" + "\t" + token.getPinyin());
-				pw.println("category:" + "\t" + token.getCat());
+				pw.print("orthography:" + "\t" + token.getCoveredText() + "\t");
+				pw.print("pinyin:" + "\t" + token.getPinyin() + "\t");
+				pw.print("category:" + "\t" + token.getCat() + "\t");
 				pw.println("gloss:" + "\t" + token.getGloss());
 			}
 			

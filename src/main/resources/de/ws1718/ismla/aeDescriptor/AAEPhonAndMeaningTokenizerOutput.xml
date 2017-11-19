@@ -13,6 +13,11 @@
       <import location="TokenAnnotationCombinerCMN.xml"/>
     
     </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="GlossOutputCMN">
+      <import location="../CASConsumer/GlossOutputCMN.xml"/>
+    
+    
+    </delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>PhonAndMeaningTokenizerOutput</name>
@@ -26,6 +31,7 @@
         <node>Tokenizer</node>
         <node>PhonTokenizer</node>
         <node>TokenAnnotationCombinerCMN</node>
+      <node>GlossOutputCMN</node>
       </fixedFlow>
     </flowConstraints>
     <typePriorities/>
@@ -41,7 +47,7 @@
     </capabilities>
   <operationalProperties>
       <modifiesCas>true</modifiesCas>
-      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
